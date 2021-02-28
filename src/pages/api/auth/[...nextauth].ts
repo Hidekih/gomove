@@ -1,17 +1,16 @@
+import { NextApiRequest, NextApiResponse } from "next";
 import NextAuth from 'next-auth';
 import Providers from 'next-auth/providers';
 import 'dotenv/config';
 
-export default NextAuth({
-  // Configure one or more authentication providers
+const options = {
   providers: [
     Providers.GitHub({
       clientId: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET
     }),
-    // ...add more providers here
   ],
+};
 
-  // A database is optional, but required to persist accounts in a database
-  database: process.env.DATABASE_URL,
-})
+export default (req: NextApiRequest, res: NextApiResponse) =>
+  NextAuth(req, res, options);
