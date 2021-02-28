@@ -1,7 +1,7 @@
 import styles from '../styles/pages/Login.module.css';
 import { signIn } from 'next-auth/client';
 
-export function Login() {
+export default function Login() {
   return (
     <div className={styles.container}>
       <div />

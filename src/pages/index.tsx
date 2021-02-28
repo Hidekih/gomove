@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { GetServerSideProps } from 'next';
 import { useSession, signIn, signOut } from 'next-auth/client'
 
-import { Login } from './Login';
+import Login from './Login';
 
 import { ChallengeContextProvider } from '../hooks/ChallengeContext';
 import { CountdownContextProvider } from '../hooks/CountdownContext';
