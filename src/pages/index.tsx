@@ -1,5 +1,8 @@
 import Head from 'next/head';
 import { GetServerSideProps } from 'next';
+import { useSession, signIn, signOut } from 'next-auth/client'
+
+import { Login } from './Login';
 
 import { ChallengeContextProvider } from '../hooks/ChallengeContext';
 import { CountdownContextProvider } from '../hooks/CountdownContext';
@@ -19,34 +22,42 @@ interface HomeProps {
 }
 
 export default function Home({ currentXp , level, challengesCompleted }: HomeProps) {
-  return (
-    <ChallengeContextProvider 
-      currentXp={currentXp}  
-      level={level}
-      challengesCompleted={challengesCompleted}
-    >
-      <div className={styles.container}>
-        <Head>
-          <title>GoMove</title>
-        </Head>
-        
-        <ExperienceBar />
-        <CountdownContextProvider>
-          <section>
-            <div>
-              <Profile />
-              <CompletedChallenges />
-              <Countdown />
-            </div>
+  const [ session, loading ] = useSession();
 
-            <div>
-              <ChallengeBox />
-            </div>
-          </section>
-        </CountdownContextProvider>
-      </div>
-    </ChallengeContextProvider>
-  )
+  return (
+    <>
+      {session ? (
+        <ChallengeContextProvider 
+          currentXp={currentXp}  
+          level={level}
+          challengesCompleted={challengesCompleted}
+        >
+          <div className={styles.container}>
+            <Head>
+              <title>GoMove</title>
+            </Head>
+            
+            <ExperienceBar />
+            <CountdownContextProvider>
+              <section>
+                <div>
+                  <Profile />
+                  <CompletedChallenges />
+                  <Countdown />
+                </div>
+
+                <div>
+                  <ChallengeBox />
+                </div>
+              </section>
+            </CountdownContextProvider>
+          </div>
+        </ChallengeContextProvider>
+      ) : (
+        <Login />
+      )}
+    </>
+    )
 }
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {

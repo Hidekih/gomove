@@ -6,30 +6,30 @@ import { useCountdown } from '../hooks/CountdownContext';
 import styles from '../styles/components/ChallengeBox.module.css'
 
 export function ChallengeBox() {
-  const [ hasActiveCHallenge, setHasActiveCHallenge ] = useState(true);
+  const [ hasActiveChallenge, setHasActiveChallenge ] = useState(true);
   
   const { activeChallenge, challengesCompletedUp, experienceGained } = useChallenge(); 
   const { resetCountdown } = useCountdown(); 
   
   useEffect(() => {
-    setHasActiveCHallenge(!!activeChallenge)
+    setHasActiveChallenge(!!activeChallenge)
   }, [activeChallenge])
 
   const finishChallenge = useCallback(() => {
     experienceGained(activeChallenge.amount);
-    setHasActiveCHallenge(false);
+    setHasActiveChallenge(false);
     challengesCompletedUp();
     resetCountdown();
   }, [activeChallenge]);
 
   const failChallenge = useCallback(() => {
-    setHasActiveCHallenge(false);
+    setHasActiveChallenge(false);
     resetCountdown();
   }, []);
 
   return(
     <div className={styles.challengeBoxContainer}>
-      { hasActiveCHallenge && activeChallenge ? (
+      { hasActiveChallenge && activeChallenge ? (
         <div className={styles.challengeBoxActive}>
           <header>{`Ganhe ${activeChallenge.amount} xp`}</header>
 
