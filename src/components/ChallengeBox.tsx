@@ -3,11 +3,11 @@ import { useCallback, useEffect, useState } from 'react'
 import { useChallenge } from '../hooks/ChallengeContext';
 import { useCountdown } from '../hooks/CountdownContext';
 
-import styles from '../styles/components/ChallengeBox.module.css'
+import { Container, ChallengeBoxActive, ChallengeBoxNotActive, FooterButton } from '../styles/components/ChallengeBox'
 
 export function ChallengeBox() {
   const [ hasActiveChallenge, setHasActiveChallenge ] = useState(true);
-  
+
   const { activeChallenge, challengesCompletedUp, experienceGained } = useChallenge(); 
   const { resetCountdown } = useCountdown(); 
   
@@ -28,9 +28,9 @@ export function ChallengeBox() {
   }, []);
 
   return(
-    <div className={styles.challengeBoxContainer}>
+    <Container>
       { hasActiveChallenge && activeChallenge ? (
-        <div className={styles.challengeBoxActive}>
+        <ChallengeBoxActive>
           <header>{`Ganhe ${activeChallenge.amount} xp`}</header>
 
           <div>
@@ -42,29 +42,29 @@ export function ChallengeBox() {
           </div>
 
           <footer>
-            <button 
+            <FooterButton 
+              buttonStyle="fail"
               type="button"
-              className={styles.challengeFailedButton}
               onClick={failChallenge}
             >
               Falhei
-            </button>
-            <button 
+            </FooterButton>
+            <FooterButton 
+              buttonStyle="success"
               type="button"
-              className={styles.challengeSucceedButton}
               onClick={finishChallenge}
             >
               Completei
-            </button>
+            </FooterButton>
           </footer>
-        </div>
+        </ChallengeBoxActive>
       ) : (
-        <div className={styles.challengeBoxNotActive}>
+        <ChallengeBoxNotActive>
           <strong>Inicie um ciclo para receber desafios</strong>
           <img src="icons/level-up.svg" alt="Level Up"/>
           <p>Avance de level completando os desafios.</p>
-        </div>
+        </ChallengeBoxNotActive>
       )}
-    </div>
+    </Container>
   )
 }

@@ -1,6 +1,6 @@
 import { useChallenge } from '../hooks/ChallengeContext';
 
-import styles from '../styles/components/ExperienceBar.module.css'
+import { Container, CurrentExperienceContainer } from '../styles/components/ExperienceBar'
 
 export const ExperienceBar = () => {
   const { currentXp, experienceToNextLevel } = useChallenge();
@@ -8,15 +8,17 @@ export const ExperienceBar = () => {
   const experienceBarFilled = currentXp / experienceToNextLevel * 100;
   
   return (
-    <header className={styles.experienceBar}>
+    <Container>
       <span>0 xp</span>
-        <div>
-          <div style={{ width: `${ experienceBarFilled }%` }}/>
-          <span className={styles.currentExperience}style={{ left: `${ experienceBarFilled }%` }}>
-            {`${ currentXp } xp`}
-          </span>
-        </div>
+      
+      <CurrentExperienceContainer>
+        <div style={{ width: `${ experienceBarFilled }%` }}/>
+        <span style={{ left: `${ experienceBarFilled }%` }}>
+          {`${ currentXp } xp`}
+        </span>
+      </CurrentExperienceContainer>
+
       <span>{`${experienceToNextLevel} xp`}</span>
-    </header>
+    </Container>
   )
 }

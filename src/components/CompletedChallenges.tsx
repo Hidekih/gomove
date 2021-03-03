@@ -1,13 +1,13 @@
 import { useChallenge } from '../hooks/ChallengeContext';
 
-import styles from '../styles/components/CompletedChallenges.module.css';
+import { Container } from '../styles/components/CompletedChallenges';
 
 export function CompletedChallenges() {
   const { challengesCompleted } = useChallenge();
   return (
-    <div className={styles.completedChallengesContainer}>
+    <Container>
       <span>Desafios completos</span>
       <span>{challengesCompleted}</span>
-    </div>
+    </Container>
   )
 }

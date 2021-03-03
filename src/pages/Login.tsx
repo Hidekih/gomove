@@ -14,7 +14,9 @@ export default function Login() {
           <img src="/icons/github.svg"/>
           <p>Faça login com o seu Github para começar!</p>
         </div>
-        <button onClick={() => signIn()}>
+        <button onClick={(): Promise<void> => signIn("github", {
+          callbackUrl: 'http://localhost:3000'
+        })} >
           <span>Entrar com GitHub</span>
           <img src="/icons/arrow-right.svg"/>
         </button>

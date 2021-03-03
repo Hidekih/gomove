@@ -1,5 +1,6 @@
 import { useCountdown } from '../hooks/CountdownContext';
-import styles from '../styles/components/Countdown.module.css';
+
+import { CountdownContainer, CountdownButton } from '../styles/components/Countdown';
 
 export function Countdown() {
   const { minutes, seconds, hasFinished, isActive, startCountdown, resetCountdown} = useCountdown();
@@ -9,7 +10,7 @@ export function Countdown() {
 
   return (
     <div>
-      <div className={styles.countdownContainer}>
+      <CountdownContainer>
         <div>
           <span>{minuteLeft}</span>
           <span>{minuteRight}</span>
@@ -19,32 +20,30 @@ export function Countdown() {
           <span>{secondLeft}</span>
           <span>{secondRight}</span>
         </div>
-      </div>
+      </CountdownContainer>
 
       { hasFinished ? (
-        <button 
+        <CountdownButton 
           disabled
-          className={styles.countdownButton} 
         >
           Ciclo Encerrado
           <img src="icons/check-circle.svg" alt="Finalizado"/>
-        </button>
+        </CountdownButton>
       ) : !isActive ? (
-        <button 
+        <CountdownButton 
           type="button" 
-          className={styles.countdownButton} 
           onClick={startCountdown}
         >
           Iniciar um ciclo
           <img src="icons/play-arrow.svg" alt="Iniciar"/>
-        </button>
+        </CountdownButton>
       ): (
-        <button 
+        <CountdownButton 
+          isActive
           type="button" 
-          className={`${styles.countdownButton} ${styles.countdownButtonActive}`} 
           onClick={resetCountdown}>
             Abandonar Ciclo
-        </button>
+        </CountdownButton>
       )}
     </div>
   )
