@@ -5,7 +5,7 @@ export const CountdownContainer = styled.div`
   align-items: center;
   font-family: 'Rajdhani';
   font-weight: 600;
-  color: var(--title);
+  color: ${props => props.theme.title};
 
   span {
     font-size: 7.5rem;
@@ -26,7 +26,7 @@ export const CountdownContainer = styled.div`
     display: flex;
     justify-content: center;
     font-size: 7.5rem;
-    background: var(--white);
+    background: ${props => props.theme.backgroundSecundary};
     padding: 0 auto;
     border-radius: 5px;
   }
@@ -51,25 +51,25 @@ export const CountdownButton = styled.button<ICountdownButtonProps>`
   outline: 0;
   border: 0;
   border-radius: 5px;
-  background: var(--blue);
+  background: ${props => props.theme.blue};
   font-size: 1.25rem;
-  color: var(--button-title);
+  color: ${props => props.theme.buttonTitle};
   font-weight: 600;
 
   transition: background 0.4s;
 
   &:not(:disabled):hover {
-    background: var(--blue-dark);
+    background: ${props => props.theme.blueDark};
   }
 
   &:disabled {
-    background: var(--white);
-    color: var(--title);
-    box-shadow: 0px 0px 6px var(--box-shadow);
+    background: ${props => props.theme.backgroundSecundary};
+    color: ${props => props.theme.title};
+    box-shadow: 0px 0px 6px ${props => props.theme.boxShadow};
 
     /* Esse border-top vai servir para o texto interno ficar alinhado */
     border-top: 4px solid transparent;
-    border-bottom: 4px solid var(--green);
+    border-bottom: 4px solid ${props => props.theme.green};
     cursor: not-allowed;
   }
 
@@ -81,13 +81,13 @@ export const CountdownButton = styled.button<ICountdownButtonProps>`
 
   ${props => props.isActive && 
   css`
-    background: var(--white);
-    color: var(--title);
-    box-shadow: 0px 0px 4px var(--box-shadow);
+    background: ${props.theme.backgroundSecundary};
+    color: ${props.theme.title};
+    box-shadow: 0px 0px 4px ${props.theme.boxShadow};
 
     &:not(:disabled):hover {
-      background: var(--red);
-      color: var(--white);
+      background: ${props.theme.red};
+      color: ${props.theme.backgroundSecundary};
     }
   `}
 `;

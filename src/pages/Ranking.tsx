@@ -1,17 +1,18 @@
 import Head from 'next/head';
-import styles from '../styles/pages/Ranking.module.css';
 
 import { SideBar } from "../components/SideBar";
 
+import { Container, Content } from '../styles/pages/Ranking';
+
 export default function Ranking() {
   return (
-    <div className={styles.container}>
+    <Container>
       <SideBar />
-      <div className={styles.content}>
+      <Content>
         <Head>
           <title>GoMove | Ranking</title>
         </Head> 
-      </div>
-    </div>
+      </Content>
+    </Container>
   )
 }

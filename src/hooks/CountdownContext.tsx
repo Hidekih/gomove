@@ -1,7 +1,7 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
 import { useChallenge } from './ChallengeContext';
 
-const COUNTDOWN_INITIAL_TIME = 0.05 * 60;
+const COUNTDOWN_INITIAL_TIME = 25 * 60;
 
 interface CountdownContextData{
   minutes: number;

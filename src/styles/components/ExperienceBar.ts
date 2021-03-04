@@ -17,7 +17,7 @@ export const Container = styled.div`
     margin: 0 1.5rem;
     height: 4px;
     border-radius: 4px;
-    background: var(--gray-line);
+    background: ${props => props.theme.grayLine};
   }
 
 `;
@@ -31,14 +31,14 @@ export const CurrentExperienceContainer = styled.div`
   margin: 0 1.5rem;
   height: 4px;
   border-radius: 4px;
-  background: var(--gray-line);
+  background: ${props => props.theme.grayLine};
 
   div {
     position: absolute;
     
     height: 4px;
     border-radius: 4px;
-    background: var(--green);
+    background: ${props => props.theme.green};
   }
 
   span {

@@ -1,20 +1,25 @@
 import Link from 'next/link'
 import { signOut } from 'next-auth/client'
 
+import { useStyledTheme } from '../hooks/StylesContext'
+
 import { Container, LogoAndSwitchTheme, NavigationLinks } from '../styles/components/SideBar';
-import { useState } from 'react';
 
 export function SideBar() {
-  const [ theme, setTheme ] = useState('light');
+  const { theme, changeTheme } = useStyledTheme();
+  
+  const handleChangeTheme = () => {
+    changeTheme();
+  }
   return (
     <Container>
       <LogoAndSwitchTheme>
         <img src="/icons/logo-blue.svg"/>
-        <button type="button">
-          { theme === 'light' ? (
-            <img src="/icons/sun.svg"/>
-          ) : (
+        <button type="button" onClick={handleChangeTheme}>
+          { theme.name === 'light' ? (
             <img src="/icons/moon.svg"/>
+          ) : (
+            <img src="/icons/sun.svg"/>
           )}
         </button>
       </LogoAndSwitchTheme>

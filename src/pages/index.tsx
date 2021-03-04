@@ -14,8 +14,11 @@ import { Countdown } from "../components/Countdown";
 import { ChallengeBox } from "../components/ChallengeBox";
 import { SideBar } from '../components/SideBar';
 
-import styles from '../styles/pages/Home.module.css';
 import { LoadingScreen } from '../components/LoadingScreen';
+import { useStyledTheme } from '../hooks/StylesContext';
+import { ThemeProvider } from 'styled-components';
+
+import { Container, Content } from '../styles/pages/Home';
 
 interface HomeProps {
   currentXp: number;
@@ -25,41 +28,46 @@ interface HomeProps {
 
 export default function Home({ currentXp , level, challengesCompleted }: HomeProps) {
   const [ session, loading ] = useSession();
+  const { theme } = useStyledTheme();
 
   return (
     <>
       {loading && <LoadingScreen />}
       {session ? (
         <>
-          <ChallengeContextProvider 
-            currentXp={currentXp}  
-            level={level}
-            challengesCompleted={challengesCompleted}
-          >
-            <div className={styles.container}>
-              <SideBar />
-              <div className={styles.content}>
-                <Head>
-                  <title>GoMove | Home</title>
-                </Head> 
-                
-                <ExperienceBar />
-                <CountdownContextProvider>
-                  <section>
-                    <div>
-                      <Profile />
-                      <CompletedChallenges />
-                      <Countdown />
-                    </div>
+            <ChallengeContextProvider 
+              currentXp={currentXp}  
+              level={level}
+              challengesCompleted={challengesCompleted}
+            >
+              { theme && (
+                <ThemeProvider theme={theme}>
+                  <Container>
+                    <SideBar />
+                    <Content>
+                      <Head>
+                        <title>GoMove | Home</title>
+                      </Head> 
+                      
+                      <ExperienceBar />
+                      <CountdownContextProvider>
+                        <section>
+                          <div>
+                            <Profile />
+                            <CompletedChallenges />
+                            <Countdown />
+                          </div>
 
-                    <div>
-                      <ChallengeBox />
-                    </div>
-                  </section>
-                </CountdownContextProvider>
-              </div>
-            </div>
-          </ChallengeContextProvider>
+                          <div>
+                            <ChallengeBox />
+                          </div>
+                        </section>
+                      </CountdownContextProvider>
+                    </Content>
+                  </Container>
+                </ThemeProvider>
+              )}
+            </ChallengeContextProvider> 
         </>
       ) : (
         <Login />

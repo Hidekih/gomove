@@ -1,26 +1,25 @@
-import styles from '../styles/pages/Login.module.css';
 import { signIn } from 'next-auth/client';
+
+import { Container, SplashArtContainer, LoginSection } from '../styles/pages/Login';
 
 export default function Login() {
   return (
-    <div className={styles.container}>
-      <div />
+    <Container>
+      <SplashArtContainer />
 
-      <section className={styles.loginSection}>
-        <img src="/logo.svg" alt=""/>
+      <LoginSection>
+        <img src="/logo.svg"/>
 
         <strong>Bem-vindo</strong>
         <div>
           <img src="/icons/github.svg"/>
           <p>Faça login com o seu Github para começar!</p>
         </div>
-        <button onClick={(): Promise<void> => signIn("github", {
-          callbackUrl: 'http://localhost:3000'
-        })} >
+        <button onClick={(): Promise<void> => signIn("github")} >
           <span>Entrar com GitHub</span>
           <img src="/icons/arrow-right.svg"/>
         </button>
-      </section>
-    </div>
+      </LoginSection>
+    </Container>
   )
 }

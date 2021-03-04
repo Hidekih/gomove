@@ -13,7 +13,7 @@ export const Container = styled.header`
   padding: 2rem 0;
 
   background-color: #4953B8;
-  background: linear-gradient(to bottom, var(--white) , transparent);
+  background: linear-gradient(to bottom, ${p => p.theme.backgroundSecundary} , transparent);
 
   > button {
     background: none;
@@ -23,6 +23,7 @@ export const Container = styled.header`
 
   > button img {
     height: 1.8rem;
+    color: ${props => props.theme.text};
   }
 `;
 

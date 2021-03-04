@@ -21,7 +21,7 @@ const spin = keyframes`
 
 export const Loader = styled.div`
   border: 10px solid #fff;
-  border-top: 10px solid var(--blue);
+  border-top: 10px solid ${props => props.theme.blue};
   border-radius: 50%;
   width: 100px;
   height: 100px;

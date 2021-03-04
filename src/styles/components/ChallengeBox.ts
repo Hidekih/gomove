@@ -5,10 +5,10 @@ export const Container = styled.div`
   height: 100%;
 
   align-items: center;
-  box-shadow: 0px 0px 14px var(--box-shadow);
+  box-shadow: 0px 0px 14px ${props => props.theme.boxShadow};
 
   border-radius: 5px;
-  background: var(--white);
+  background: ${props => props.theme.backgroundSecundary};
 `;
 
 export const ChallengeBoxActive = styled.div`
@@ -23,10 +23,10 @@ export const ChallengeBoxActive = styled.div`
     width: 100%;
     text-align: center;
     padding: 1rem 0;
-    color: var(--blue);
+    color: ${props => props.theme.blue};
     font-weight: 600;
     font-size: 1.2rem;
-    border-bottom: 2px solid var(--gray-line);
+    border-bottom: 2px solid ${props => props.theme.grayLine};
   }
 
   > div {
@@ -36,14 +36,14 @@ export const ChallengeBoxActive = styled.div`
   } 
 
   > div strong{
-    color: var(--title);
+    color: ${props => props.theme.title};
     font-size: 2.5rem;
     font-weight: 600;
     margin: 0.6rem 0;
   } 
 
   > div p{
-    color: var(--text);
+    color: ${props => props.theme.text};
     font-size: 1rem;
     text-align: center;
   } 
@@ -69,7 +69,7 @@ export const ChallengeBoxActive = styled.div`
     border-radius: 5px;
     border: 0;
     outline: 0;
-    color: var(--white);
+    color: ${props => props.theme.backgroundSecundary};
     font-size: 1rem;
     font-weight: 600;
 
@@ -89,14 +89,14 @@ export const ChallengeBoxNotActive = styled.div`
     font-weight: 500;
     line-height: 2.2rem;
     text-align: center;
-    color: var(--text);
+    color: ${props => props.theme.text};
   }
 
   p {
     font-size: 1rem;
     line-height: 1.6rem;
     text-align: center;
-    color: var(--text);
+    color: ${props => props.theme.text};
   }
 
   img {
@@ -111,8 +111,8 @@ interface IFooterButtonsProps {
 }
 
 const footerButtonsColor = {
-  success: css`background: var(--green);`,
-  fail: css`background: var(--red);`,
+  success: css`background: ${props => props.theme.green};`,
+  fail: css`background: ${props => props.theme.red};`,
 }
 
 export const FooterButton = styled.button<IFooterButtonsProps>`

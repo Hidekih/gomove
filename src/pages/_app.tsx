@@ -1,11 +1,15 @@
-import { GlobalStyles } from '../styles/global'
 import { Provider } from 'next-auth/client'
+import { ThemeContextProvider } from '../hooks/StylesContext'
 
-function MyApp({ Component, pageProps }) {
+import { GlobalStyles } from '../styles/global'
+
+function MyApp({ Component, pageProps }) { 
   return (
     <Provider session={pageProps.session}>
-      <Component {...pageProps} />
-      <GlobalStyles/>
+      <ThemeContextProvider>
+        <Component {...pageProps} />
+        <GlobalStyles/>
+      </ThemeContextProvider>
     </Provider>
   )
 }
