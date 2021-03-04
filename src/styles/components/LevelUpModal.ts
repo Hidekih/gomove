@@ -13,19 +13,23 @@ export const Overlay = styled.div`
   align-items: center;
   justify-content: center;
 
-  background: ${props => props.theme.modalBg};
+  background: rgba(37, 37, 37, 0.8);
 `;
 
 export const Container = styled.div`
   position: relative;
   width: 100%;
   max-width: 400px;
-  background: ${props => props.theme.backgroundSecundary};
+  background: #fff;
   border-radius: 5px;
   box-shadow: 0 0 60px rgba(0, 0, 0, 0.05);
   text-align: center;
 
   overflow: hidden;
+
+  @media(max-width: 720px) {
+    max-width: 85%;
+  }
 
   > div {
     padding: 2rem 3rem;
@@ -34,7 +38,7 @@ export const Container = styled.div`
   header {
     font-size: 8.8rem;
     font-weight: 600 ;
-    color: ${props => props.theme.blue};
+    color: #5965e0;
     background: url('/icons/levelup.svg') no-repeat center;
     background-size: contain;
   }
@@ -42,13 +46,13 @@ export const Container = styled.div`
   strong {
     font-size: 2.25rem;
     font-weight: 600 ;
-    color: ${props => props.theme.title};
+    color: #2e384d;
   }
 
   p {
     font-size: 1.25rem;
     font-weight: 400 ;
-    color: ${props => props.theme.text};
+    color: #667;
   }
 
   footer {
@@ -72,13 +76,13 @@ export const TwitterShareBtn = styled(TwitterShareButton)`
   flex: 1;
   align-items: center;
   justify-content: center;
-  border-top: 1px solid ${props => props.theme.grayLine} !important;
-  background: ${props => props.theme.blueLight} !important;
+  border-top: 1px solid #dcdde0 !important;
+  background: #F5FCFF !important;
 
   span{
     font-size: 1.2rem;
     font-weight: 600;
-    color: ${props => props.theme.blueTwitter};
+    color: #2aa9e0;
     margin-right: 1rem;
   }
 `;

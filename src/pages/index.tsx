@@ -19,6 +19,7 @@ import { useStyledTheme } from '../hooks/StylesContext';
 import { ThemeProvider } from 'styled-components';
 
 import { Container, Content } from '../styles/pages/Home';
+import { LevelUpModal } from '../components/LevelUpModal';
 
 interface HomeProps {
   currentXp: number;
@@ -29,7 +30,6 @@ interface HomeProps {
 export default function Home({ currentXp , level, challengesCompleted }: HomeProps) {
   const [ session, loading ] = useSession();
   const { theme } = useStyledTheme();
-
   return (
     <>
       {loading && <LoadingScreen />}
@@ -40,33 +40,31 @@ export default function Home({ currentXp , level, challengesCompleted }: HomePro
               level={level}
               challengesCompleted={challengesCompleted}
             >
-              { theme && (
-                <ThemeProvider theme={theme}>
-                  <Container>
-                    <SideBar />
-                    <Content>
-                      <Head>
-                        <title>GoMove | Home</title>
-                      </Head> 
-                      
-                      <ExperienceBar />
-                      <CountdownContextProvider>
-                        <section>
-                          <div>
-                            <Profile />
-                            <CompletedChallenges />
-                            <Countdown />
-                          </div>
+              <ThemeProvider theme={theme}>
+                <Container>
+                  <SideBar />
+                  <Content>
+                    <Head>
+                      <title>GoMove | Home</title>
+                    </Head> 
+                    
+                    <ExperienceBar />
+                    <CountdownContextProvider>
+                      <section>
+                        <div>
+                          <Profile />
+                          <CompletedChallenges />
+                          <Countdown />
+                        </div>
 
-                          <div>
-                            <ChallengeBox />
-                          </div>
-                        </section>
-                      </CountdownContextProvider>
-                    </Content>
-                  </Container>
-                </ThemeProvider>
-              )}
+                        <div>
+                          <ChallengeBox />
+                        </div>
+                      </section>
+                    </CountdownContextProvider>
+                  </Content>
+                </Container>
+              </ThemeProvider>
             </ChallengeContextProvider> 
         </>
       ) : (

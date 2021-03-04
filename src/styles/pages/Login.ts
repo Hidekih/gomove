@@ -8,6 +8,11 @@ export const Container = styled.div`
 
   background: #4953B8;
   padding: 4rem 0;  
+
+  @media(max-width: 720px) {
+    display: flex;
+    padding: 0 3rem;
+  }
 `;
 
 export const SplashArtContainer = styled.div`
@@ -19,6 +24,10 @@ export const SplashArtContainer = styled.div`
   img{
     height: 100%;
   }
+
+  @media(max-width: 720px) {
+    display: none;
+  }
 `;
 
 export const LoginSection = styled.section`
@@ -26,9 +35,14 @@ export const LoginSection = styled.section`
   display: flex;
   flex-direction: column;
   width: 500px;
-  min-width: 500px;
-  padding-left: 4rem;
-  padding-right: 4rem;
+  padding: 0 4rem;
+
+
+  @media(max-width: 720px) {
+    display: flex;
+    padding: 0;
+    width: 100%;
+  }
 
   strong {
     margin-top: 6rem;

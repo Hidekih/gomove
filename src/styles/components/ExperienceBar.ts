@@ -5,7 +5,7 @@ export const Container = styled.div`
   align-items: center;
 
   span {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 
   > div {
@@ -43,7 +43,7 @@ export const CurrentExperienceContainer = styled.div`
 
   span {
     position: absolute;
-    top: 0.9rem;
+    top: 1rem;
     transform: translateX(-50%);
   }
 `;

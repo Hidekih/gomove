@@ -82,7 +82,7 @@ export const ChallengeBoxNotActive = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 4.9rem;
+  padding: 2.5rem 4.9rem;
 
   strong {
     font-size: 1.6rem;

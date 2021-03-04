@@ -4,6 +4,10 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
 
+  @media(max-width: 720px) {
+    margin-top: 3rem;
+  }
+
   > img {
     height: 5.5rem;
     border-radius: 50%;

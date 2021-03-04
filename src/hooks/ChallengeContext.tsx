@@ -3,6 +3,7 @@ import cookies from 'js-cookie';
 
 import challenges from '../../challenges.json';
 import { LevelUpModal } from '../components/LevelUpModal';
+import { ThemeProvider } from 'styled-components';
 
 interface Challenge {
   type: string;
