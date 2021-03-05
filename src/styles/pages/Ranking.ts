@@ -27,7 +27,7 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
 
-  width: 60rem;
+  width: 100%;
   max-width: 60rem;
 
   section {
@@ -43,6 +43,10 @@ export const RankSubtitle = styled.p`
   font-size: 0.875rem;
   font-weight: 600;
   color: ${props => props.theme.text};
+
+  @media(max-width: 720px) {
+    display: none;
+  }
 
   span:nth-child(1) {
     width: 7.5%;

@@ -1,7 +1,7 @@
 const dark = {
   name: 'dark',
   background: '#333',
-  backgroundSecundary: '#444',
+  backgroundSecundary: '#3f3f3f', //#333
   modalBg: 'rgba(37, 37, 37, 0.8)',
   grayLine: '#777777',
   boxShadow: 'none',
@@ -11,7 +11,7 @@ const dark = {
   buttonTitle: '#dcdde0',
   red: '#e83f5b',
   green: '#4cd62b',
-  blue: '#4953b8',
+  blue: '#525dd1',
   blueDark: '#424aa3',
   blueTwitter: '#F5FCFF',
   blueLight: '#1e7ba3,'

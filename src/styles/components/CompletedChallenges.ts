@@ -7,7 +7,7 @@ export const Container = styled.div`
 
   margin: 3.5rem 0;
   padding-bottom: 1rem;
-  border-bottom: 2px solid #d7d8da;
+  border-bottom: 2px solid ${props => props.theme.grayLine};
   font-weight: 500;
 
   span {

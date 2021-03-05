@@ -5,8 +5,11 @@ export const Container = styled.div`
   height: 6rem;  
   background: ${props => props.theme.backgroundSecundary};
   border-radius: 6px;
-
   overflow: hidden;
+
+  @media(max-width: 720px) {
+    max-width: 90vw;
+  }
 
   & + div {
     margin-top: 0.4rem;

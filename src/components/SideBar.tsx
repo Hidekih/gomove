@@ -4,13 +4,15 @@ import { signOut } from 'next-auth/client'
 import { useStyledTheme } from '../hooks/StylesContext'
 
 import { Container, LogoAndSwitchTheme, NavigationLinks } from '../styles/components/SideBar';
+import { useCallback } from 'react';
 
 export function SideBar() {
   const { theme, changeTheme } = useStyledTheme();
   
-  const handleChangeTheme = () => {
+  const handleChangeTheme = useCallback(() => {
     changeTheme();
-  }
+  }, [theme]);
+
   return (
     <Container>
       <LogoAndSwitchTheme>
@@ -29,7 +31,7 @@ export function SideBar() {
           <a> <img src="/icons/home.svg"/> </a>
         </Link>
 
-        <Link href='/Ranking'>
+        <Link href='/ranking'>
           <a> <img src="/icons/award.svg"/> </a>
         </Link>
       </NavigationLinks>

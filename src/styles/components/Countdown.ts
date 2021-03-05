@@ -87,7 +87,7 @@ export const CountdownButton = styled.button<ICountdownButtonProps>`
 
     &:not(:disabled):hover {
       background: ${props.theme.red};
-      color: ${props.theme.backgroundSecundary};
+      color: #fff;
     }
   `}
 `;
