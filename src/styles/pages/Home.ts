@@ -16,10 +16,14 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
 
-  max-width: 992px;
+  max-width: 60rem;
   height: 100vh;
   margin: 0 auto;
   padding: 2.5rem 2rem;
+
+  @media(max-width: 720px) {
+    margin-top: 5rem;
+  }
 
   section {
     flex: 1;

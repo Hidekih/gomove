@@ -69,7 +69,7 @@ export const ChallengeBoxActive = styled.div`
     border-radius: 5px;
     border: 0;
     outline: 0;
-    color: ${props => props.theme.backgroundSecundary};
+    color: white;
     font-size: 1rem;
     font-weight: 600;
 

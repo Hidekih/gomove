@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.header`
+  position: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
