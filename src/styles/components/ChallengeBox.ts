@@ -18,6 +18,7 @@ export const ChallengeBoxActive = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 1.2rem 2.4rem;
+  min-height: 32rem;
 
   header {
     width: 100%;
@@ -49,6 +50,7 @@ export const ChallengeBoxActive = styled.div`
   } 
 
   > div img {
+    width: 8rem;
     height: 8rem;
   }
 
@@ -57,6 +59,7 @@ export const ChallengeBoxActive = styled.div`
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
     width: 100%;
+    margin-top: 1.2rem;
   } 
 
   footer button {
@@ -82,6 +85,8 @@ export const ChallengeBoxNotActive = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+  min-height: 32rem;
   padding: 2.5rem 4.9rem;
 
   strong {
@@ -93,7 +98,7 @@ export const ChallengeBoxNotActive = styled.div`
   }
 
   p {
-    font-size: 1rem;
+    font-size: 1.1rem;
     line-height: 1.6rem;
     text-align: center;
     color: ${props => props.theme.text};

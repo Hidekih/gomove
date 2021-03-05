@@ -2,17 +2,20 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
-  width: 100%;
-  height: 100%;
+  width: auto;
+  height: auto;
+  margin-left: 6rem;
   background: ${props => props.theme.background};
   color: ${props => props.theme.text};
   
   @media(max-width: 720px) {
     flex-direction: column;
+    margin-left: 0;
   }
 `;
 
 export const Content = styled.div`
+  flex: 1;
   display: flex;
   flex-direction: column;
 

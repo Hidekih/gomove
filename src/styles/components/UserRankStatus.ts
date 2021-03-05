@@ -21,7 +21,7 @@ export const Position = styled.div`
   max-width: 7.5%;
 
   border-left: 3px solid transparent;
-  border-right: 3px solid ${props => props.theme.grayLine};
+  border-right: 3px solid ${props => props.theme.background};
 
   span {
     font-size: 1.5rem;

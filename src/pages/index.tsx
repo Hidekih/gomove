@@ -19,7 +19,6 @@ import { useStyledTheme } from '../hooks/StylesContext';
 import { ThemeProvider } from 'styled-components';
 
 import { Container, Content } from '../styles/pages/Home';
-import { LevelUpModal } from '../components/LevelUpModal';
 
 interface HomeProps {
   currentXp: number;
@@ -41,8 +40,8 @@ export default function Home({ currentXp , level, challengesCompleted }: HomePro
               challengesCompleted={challengesCompleted}
             >
               <ThemeProvider theme={theme}>
+                <SideBar />
                 <Container>
-                  <SideBar />
                   <Content>
                     <Head>
                       <title>GoMove | Home</title>

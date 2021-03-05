@@ -12,6 +12,7 @@ export const Container = styled.div`
   
   @media(max-width: 720px) {
     flex-direction: column;
+    margin-left: 0;
   }
 
   h1 {
@@ -28,7 +29,6 @@ export const Content = styled.div`
 
   width: 60rem;
   max-width: 60rem;
-  height: 10000px;
 
   section {
     margin-top: 1.2rem;

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.header`
   position: fixed;
   display: flex;
+  z-index: 9;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
@@ -13,15 +14,13 @@ export const Container = styled.header`
   padding: 2rem 0;
 
   background-color: #4953B8;
-  background: linear-gradient(to bottom, ${p => p.theme.backgroundSecundary} , transparent);
+  background: ${props => props.theme.backgroundSecundary};
 
   @media(max-width: 720px) {
     flex-direction: row;
     width: 100%;
     height: 5rem;
     padding: 1.6rem;
-
-    background: ${props => props.theme.backgroundSecundary};
   }
 
   > button {
