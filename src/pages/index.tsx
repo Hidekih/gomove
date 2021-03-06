@@ -1,88 +1,48 @@
-import Head from 'next/head';
-import { GetServerSideProps } from 'next';
-import { useSession } from 'next-auth/client'
-
-import Login from './Login'
-
-import { ChallengeContextProvider } from '../hooks/ChallengeContext';
-import { CountdownContextProvider } from '../hooks/CountdownContext';
-
-import { ExperienceBar } from "../components/ExperienceBar";
-import { Profile } from "../components/Profile";
-import { CompletedChallenges } from "../components/CompletedChallenges";
-import { Countdown } from "../components/Countdown";
-import { ChallengeBox } from "../components/ChallengeBox";
-import { SideBar } from '../components/SideBar';
-
+import { signIn, useSession } from 'next-auth/client';
+import { useRouter } from 'next/router'
+import { useEffect } from 'react';
 import { LoadingScreen } from '../components/LoadingScreen';
-import { useStyledTheme } from '../hooks/StylesContext';
-import { ThemeProvider } from 'styled-components';
 
-import { Container, Content } from '../styles/pages/Home';
+import { Container, SplashArtContainer, LoginSection } from '../styles/pages/Login';
 
-interface HomeProps {
-  currentXp: number;
-  level: number;
-  challengesCompleted: number;
-}
-
-export default function Home({ currentXp , level, challengesCompleted }: HomeProps) {
+export default function Login() {
   const [ session, loading ] = useSession();
-  const { theme } = useStyledTheme();
+  const router = useRouter();
+
+  useEffect(() => {
+    async function handleRedirectToHome() {
+      await router.push('/home');
+    }
+
+    if(session) {
+      handleRedirectToHome();
+      console.log()
+    }
+  }, [session])
+  
   return (
     <>
-      {loading && <LoadingScreen />}
-      {session ? (
-        <>
-            <ChallengeContextProvider 
-              currentXp={currentXp}  
-              level={level}
-              challengesCompleted={challengesCompleted}
-            >
-              <ThemeProvider theme={theme}>
-                <SideBar />
-                <Container>
-                  <Content>
-                    <Head>
-                      <title>GoMove | Home</title>
-                    </Head> 
-                    
-                    <ExperienceBar />
-                    <CountdownContextProvider>
-                      <section>
-                        <div>
-                          <Profile />
-                          <CompletedChallenges />
-                          <Countdown />
-                        </div>
+      { loading && <LoadingScreen/> }
 
-                        <div>
-                          <ChallengeBox />
-                        </div>
-                      </section>
-                    </CountdownContextProvider>
-                  </Content>
-                </Container>
-              </ThemeProvider>
-            </ChallengeContextProvider> 
-        </>
-      ) : (
-        <Login />
+      { !session && (
+        <Container>
+          <SplashArtContainer />
+
+          <LoginSection>
+            <img src="/logo.svg"/>
+
+            <strong>Bem-vindo</strong>
+            <div>
+              <img src="/icons/github.svg"/>
+              <p>Faça login com o seu Github para começar!</p>
+            </div>
+            <button onClick={(): Promise<void> => signIn("github")} >
+              <span>Entrar com GitHub</span>
+              <img src="/icons/arrow-right.svg"/>
+            </button>
+          </LoginSection>
+        </Container>
       )}
     </>
-    )
-}
-
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  // In Next.JS, all in this function is loaded on server side, before rendering in browser
-  // Desestruturing these values from cookies and setting default values;
-  const { currentXp = '0', level = '1', challengesCompleted = '0' } = ctx.req.cookies;
-
-  return {
-    props: { 
-      currentXp: Number(currentXp),
-      level: Number(level),
-      challengesCompleted: Number(challengesCompleted),
-    }
-  }
+  )
 }

@@ -27,7 +27,7 @@ export function SideBar() {
       </LogoAndSwitchTheme>
 
       <NavigationLinks>
-        <Link href='/'>
+        <Link href='/home'>
           <a> <img src="/icons/home.svg"/> </a>
         </Link>
 
@@ -37,7 +37,9 @@ export function SideBar() {
       </NavigationLinks>
 
       
-      <button type="button" onClick={() => signOut()}>
+      <button type="button" onClick={() => signOut({
+        callbackUrl: 'http://localhost:3000/'
+      })}>
         <img src="/icons/log-out.svg"/>
       </button>
     </Container>

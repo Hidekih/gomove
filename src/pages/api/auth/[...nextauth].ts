@@ -11,9 +11,11 @@ const options = {
   ],
 
   async redirect(_, baseUrl) {
-    return baseUrl;
+    return await baseUrl;
   },
 }
 
-export default (req: NextApiRequest, res: NextApiResponse) =>
-  NextAuth(req, res, options);
+export default async(req: NextApiRequest, res: NextApiResponse) => {
+  await NextAuth(req, res, options);
+}
+  
