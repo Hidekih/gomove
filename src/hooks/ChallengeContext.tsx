@@ -3,7 +3,7 @@ import cookies from 'js-cookie';
 
 import challenges from '../../challenges.json';
 import { LevelUpModal } from '../components/LevelUpModal';
-import { ThemeProvider } from 'styled-components';
+import { useSession } from 'next-auth/client';
 
 interface Challenge {
   type: string;
@@ -65,7 +65,7 @@ export function ChallengeContextProvider({ children, ...rest  }: ContextProps) {
         icon: '/favicon.png',
         body: `Valendo ${challenge.amount}xp!`
       });
-    };
+    }
   }, [challenges]);
 
   const challengesCompletedUp = useCallback(() => {
@@ -97,6 +97,21 @@ export function ChallengeContextProvider({ children, ...rest  }: ContextProps) {
     setIsLevelUpModalOpen(false);
   }, [])
 
+
+
+
+  // async function registerUser() {
+  //   const response = axios.post('register', {
+  //   name: session.user.name,
+  //   email: session.user.email,
+  //   avatar_url,
+  //   level,
+  //   experience
+  // });
+
+
+
+  
   return (
     <ChallengeContext.Provider value={{ 
       currentXp,

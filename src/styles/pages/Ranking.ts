@@ -4,20 +4,22 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
 
-  width: auto;
-  height: auto;
-  margin-left: 6rem;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  padding: 2rem 2rem 2rem 8rem;
   background: ${props => props.theme.background};
   color: ${props => props.theme.text};
   
   @media(max-width: 720px) {
     flex-direction: column;
-    margin-left: 0;
+    padding: 8rem 2rem 2rem 2rem;
+
+    align-items: center;
   }
 
   h1 {
     color: ${props => props.theme.title};
-    margin-top: 1.8rem;
   }
 `;
 
@@ -31,6 +33,8 @@ export const Content = styled.div`
   max-width: 60rem;
 
   section {
+    display: flex;
+    flex-direction: column;
     margin-top: 1.2rem;
   }
 `;

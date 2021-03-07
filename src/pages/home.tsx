@@ -1,7 +1,8 @@
 import Head from 'next/head';
 import { GetServerSideProps } from 'next';
+import axios from 'axios';
 
-import { ChallengeContextProvider } from '../hooks/ChallengeContext';
+import { ChallengeContextProvider, useChallenge } from '../hooks/ChallengeContext';
 import { CountdownContextProvider } from '../hooks/CountdownContext';
 
 import { ExperienceBar } from "../components/ExperienceBar";
@@ -15,6 +16,8 @@ import { useStyledTheme } from '../hooks/StylesContext';
 import { ThemeProvider } from 'styled-components';
 
 import { Container, Content } from '../styles/pages/Home';
+import { useEffect } from 'react';
+import { useSession } from 'next-auth/client';
 
 interface HomeProps {
   currentXp: number;
@@ -23,7 +26,25 @@ interface HomeProps {
 }
 
 export default function Home({ currentXp , level, challengesCompleted }: HomeProps) {
+  const [ session ] = useSession();
   const { theme } = useStyledTheme();
+
+  useEffect(() => {
+    async function registerUser() {
+      const response = await axios.post('api/register', {
+        name: 'alex',
+        email: 'emialdojuca',
+        avatar_url: 'image',
+        challengesCompleted: 12,
+        level: 8,
+        experience: 129,
+      });
+
+      console.log(response)
+    }
+
+    registerUser();
+  }, []);
   
   return (
     <ChallengeContextProvider 

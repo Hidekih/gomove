@@ -6,39 +6,41 @@ import {
   Experience 
 } from '../styles/components/UserRankStatus';
 
-interface UserProps {
+interface UserRankStatusProps {
+  avatar_url: string;
   name: string;
   level: number;
   challengesCompleted: number;
   experience: number;
 }
 
-export function UserRankStatus() {
+export function UserRankStatus({ name, avatar_url, level, challengesCompleted, experience } : UserRankStatusProps) {
+  console.log(avatar_url)
   return(
     <Container>
       <Position><span>{1}</span></Position>
 
       <User>
-        <img src={'https://avatars.githubusercontent.com/u/59781045?s=460&u=bc1b2e17c7e5396d657fedca7d3e905270816d32&v=4'} alt="Profile"/>
+        <img src={avatar_url} alt="Profile"/>
         <div>
-          <strong>{'Alexandre Hideki Siroma'}</strong>
+          <strong>{name}</strong>
           <p>
             <img src="icons/level.svg" alt="Level"/>
-            {`Level ${1}`}
+            {`Level ${level}`}
           </p>
         </div>
       </User>
 
       <Challenges>
         <p>
-          <span>{123}</span> 
+          <span>{challengesCompleted}</span> 
           completados
         </p>
       </Challenges>
 
       <Experience>
         <p>
-          <span>{123123}</span> 
+          <span>{experience}</span> 
           xp
         </p>
       </Experience>

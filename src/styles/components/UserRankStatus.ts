@@ -8,7 +8,7 @@ export const Container = styled.div`
   overflow: hidden;
 
   @media(max-width: 720px) {
-    max-width: 90vw;
+    /* max-width: 90vw; */
   }
 
   & + div {
@@ -30,6 +30,12 @@ export const Position = styled.div`
     font-size: 1.5rem;
     color: ${props => props.theme.text};
   }
+
+  @media(max-width: 720px) {
+    span {
+      font-size: 1.6rem;
+    }
+  }
 `;
 
 export const User = styled.div`
@@ -39,8 +45,10 @@ export const User = styled.div`
   width: 57.5%;
   max-width: 57.5%;
   margin-left: 1rem;
+
   @media(max-width: 720px) {
-    /* margin-top: 3rem; */
+    width: 72.5%;
+    max-width: 72.5%;
   }
 
   > img {
@@ -74,6 +82,10 @@ export const Challenges = styled.div`
   width: 20%;
   max-width: 20%; 
 
+  @media(max-width: 720px) {
+    display: none;
+  }
+
   p {
     font-size: 1rem;
     font-weight: 500;
@@ -101,5 +113,14 @@ export const Experience = styled.div`
   p span {
     color: ${props => props.theme.blue};
     margin-right: 0.5rem;
+  }
+
+  @media(max-width: 720px) {
+    width: 20%;
+    max-width: 20%;
+
+    p {
+      font-size: 1.1rem;
+    }
   }
 `;
