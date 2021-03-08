@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { signIn, useSession } from 'next-auth/client';
 import { useRouter } from 'next/router'
 import { useEffect } from 'react';
@@ -22,6 +23,9 @@ export default function Login() {
   
   return (
     <>
+     <Head>
+        <title>GoMove | Login</title>
+      </Head> 
       { loading && <LoadingScreen/> }
 
       { !session && (
