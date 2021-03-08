@@ -7,18 +7,18 @@ import {
 } from '../styles/components/UserRankStatus';
 
 interface UserRankStatusProps {
-  avatar_url: string;
+  position: number;
   name: string;
+  avatar_url: string;
   level: number;
   challengesCompleted: number;
   experience: number;
 }
 
-export function UserRankStatus({ name, avatar_url, level, challengesCompleted, experience } : UserRankStatusProps) {
-  console.log(avatar_url)
+export function UserRankStatus({ position, name, avatar_url, level, challengesCompleted, experience } : UserRankStatusProps) {
   return(
     <Container>
-      <Position><span>{1}</span></Position>
+      <Position><span>{position}</span></Position>
 
       <User>
         <img src={avatar_url} alt="Profile"/>

@@ -1,15 +1,18 @@
 import { NowRequest, NowResponse } from '@vercel/node';
-import { MongoClient, Db, Cursor } from 'mongodb';
+import { MongoClient, Db } from 'mongodb';
 import { URL } from 'url';
 
 let cachedDb: Db = null;
 
-async function connectToDataBase(uri: string) {
+async function connectToDatabase(uri: string) {
   if (cachedDb) {
     return cachedDb;
   }
 
-  const client = await MongoClient.connect(uri);
+  const client = await MongoClient.connect(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
 
   const parsedUrl = new URL(uri);
 
@@ -23,7 +26,7 @@ async function connectToDataBase(uri: string) {
 }
 
 export default async(request: NowRequest, response: NowResponse) => {
-  const db = await connectToDataBase(process.env.MONGODB_URI);
+  const db = await connectToDatabase(process.env.MONGODB_URI);
 
   const collection = db.collection('users');
 

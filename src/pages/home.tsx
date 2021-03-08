@@ -1,8 +1,8 @@
 import Head from 'next/head';
 import { GetServerSideProps } from 'next';
-import axios from 'axios';
+// import axios from 'axios';
 
-import { ChallengeContextProvider, useChallenge } from '../hooks/ChallengeContext';
+import { ChallengeContextProvider } from '../hooks/ChallengeContext';
 import { CountdownContextProvider } from '../hooks/CountdownContext';
 
 import { ExperienceBar } from "../components/ExperienceBar";
@@ -16,7 +16,6 @@ import { useStyledTheme } from '../hooks/StylesContext';
 import { ThemeProvider } from 'styled-components';
 
 import { Container, Content } from '../styles/pages/Home';
-import { useEffect } from 'react';
 import { useSession } from 'next-auth/client';
 
 interface HomeProps {
@@ -26,25 +25,25 @@ interface HomeProps {
 }
 
 export default function Home({ currentXp , level, challengesCompleted }: HomeProps) {
-  const [ session ] = useSession();
+  // const [ session ] = useSession();
   const { theme } = useStyledTheme();
 
-  useEffect(() => {
-    async function registerUser() {
-      const response = await axios.post('api/register', {
-        name: 'alex',
-        email: 'emialdojuca',
-        avatar_url: 'image',
-        challengesCompleted: 12,
-        level: 8,
-        experience: 129,
-      });
+  // useEffect(() => {
+  //   async function registerUser() {
+  //     const response = await axios.post('api/register', {
+  //       name: 'alex',
+  //       email: 'emialdojuca',
+  //       avatar_url: 'image',
+  //       challengesCompleted: 12,
+  //       level: 8,
+  //       experience: 129,
+  //     });
 
-      console.log(response)
-    }
+  //     console.log(response)
+  //   }
 
-    registerUser();
-  }, []);
+  //   registerUser();
+  // }, []);
   
   return (
     <ChallengeContextProvider 

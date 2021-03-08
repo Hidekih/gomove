@@ -1,9 +1,12 @@
 import { createContext, ReactNode, useCallback, useContext, useEffect, useState } from 'react';
+import { useSession } from 'next-auth/client';
 import cookies from 'js-cookie';
+import axios from 'axios';
 
 import challenges from '../../challenges.json';
 import { LevelUpModal } from '../components/LevelUpModal';
-import { useSession } from 'next-auth/client';
+
+import calculateTotalXp from '../utils/calculateTotalXp';
 
 interface Challenge {
   type: string;
@@ -39,10 +42,29 @@ export function ChallengeContextProvider({ children, ...rest  }: ContextProps) {
 
   const [ activeChallenge, setActiveChallenge ] = useState(null);
   const [ isLevelUpModalOpen, setIsLevelUpModalOpen ] = useState(false);
-
+  const [ session ] = useSession();
+  
   useEffect(() => {
     Notification.requestPermission();
   }, []);
+
+  useEffect(() => {
+    async function registerUser() {
+      const response = await axios.post('api/register', {
+        name: session.user.name,
+        email: session.user.email,
+        avatar_url: session.user.image,
+        challengesCompleted,
+        level,
+        experience: calculateTotalXp(level, currentXp),
+      });
+
+      console.log(response);
+    }
+    if( session ){
+      registerUser();
+    }
+  }, [currentXp]);
 
   useEffect(() => {
     cookies.set('currentXp', String(currentXp));

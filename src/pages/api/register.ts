@@ -1,5 +1,5 @@
 import { NowRequest, NowResponse } from '@vercel/node';
-import { MongoClient, Db, ObjectID, ObjectId } from 'mongodb';
+import { MongoClient, Db, ObjectId } from 'mongodb';
 import { URL } from 'url';
 
 let cachedDb: Db = null;
@@ -17,7 +17,6 @@ async function connectToDatabase(uri: string) {
   const parsedUrl = new URL(uri);
 
   const dbName = parsedUrl.pathname.substring(1);
-  console.log(dbName)
 
   const db = client.db(dbName)
 
@@ -34,7 +33,6 @@ export default async(request: NowRequest, response: NowResponse) => {
   const collection = db.collection('users');
 
   let user = await collection.findOne({ email });
-  console.log(user);
 
   if (!user) {
     await collection.insertOne({
@@ -57,5 +55,5 @@ export default async(request: NowRequest, response: NowResponse) => {
     }});
   }
 
-  return response.json({ message: `Hello`});
+  return response.json({ message: `Sucesso`});
 }

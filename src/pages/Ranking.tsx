@@ -8,7 +8,6 @@ import { UserRankStatus } from '../components/UserRankStatus'
 
 import { Container, Content, RankSubtitle } from '../styles/pages/Ranking';
 import { useEffect, useState } from 'react';
-import { LoadingScreen } from '../components/LoadingScreen';
 
 export interface userData {
   _id: string;
@@ -27,10 +26,18 @@ export default function Ranking() {
     async function findAllUsers() {
       const response = await axios.get<userData[]>('api/users');
       const requestedUsers = response.data;
+
+      for (let i = 0; i < requestedUsers.length; i++) {
+        for(let j = i+1; j < requestedUsers.length; j++) {
+          if(requestedUsers[i].experience < requestedUsers[j].experience) {
+            let x = requestedUsers[i];
+            requestedUsers[i] = requestedUsers[j];
+            requestedUsers[j] = x; 
+          }
+        }
+      }
       
-      console.log(requestedUsers)
       setUsers(requestedUsers);
-      console.log(users)
     }
 
     findAllUsers();
@@ -54,9 +61,10 @@ export default function Ranking() {
           </RankSubtitle>
 
           <section>
-            { users && users.map(user => (
+            { users && users.map((user, index) => (
               <UserRankStatus 
-                key={user._id} 
+                key={user._id}
+                position={index + 1} 
                 name={user.name} 
                 avatar_url={user.avatar_url}
                 level={user.level}
@@ -64,87 +72,6 @@ export default function Ranking() {
                 experience={user.experience}
               />
             ))}
-
-              {/* <UserRankStatus 
-                key={'user._id'} 
-                name={'user.name'} 
-                avatar_url={'user.avatar_url'}
-                level={2}
-                challengesCompleted={3}
-                experience={4}
-              />
-              <UserRankStatus 
-                key={'user._id'} 
-                name={'user.name'} 
-                avatar_url={'user.avatar_url'}
-                level={2}
-                challengesCompleted={3}
-                experience={4}
-              />
-              <UserRankStatus 
-                key={'user._id'} 
-                name={'user.name'} 
-                avatar_url={'user.avatar_url'}
-                level={2}
-                challengesCompleted={3}
-                experience={4}
-              />
-              <UserRankStatus 
-                key={'user._id'} 
-                name={'user.name'} 
-                avatar_url={'user.avatar_url'}
-                level={2}
-                challengesCompleted={3}
-                experience={4}
-              />
-              <UserRankStatus 
-                key={'user._id'} 
-                name={'user.name'} 
-                avatar_url={'user.avatar_url'}
-                level={2}
-                challengesCompleted={3}
-                experience={4}
-              />
-              <UserRankStatus 
-                key={'user._id'} 
-                name={'user.name'} 
-                avatar_url={'user.avatar_url'}
-                level={2}
-                challengesCompleted={3}
-                experience={4}
-              />
-              <UserRankStatus 
-                key={'user._id'} 
-                name={'user.name'} 
-                avatar_url={'user.avatar_url'}
-                level={2}
-                challengesCompleted={3}
-                experience={4}
-              />
-              <UserRankStatus 
-                key={'user._id'} 
-                name={'user.name'} 
-                avatar_url={'user.avatar_url'}
-                level={2}
-                challengesCompleted={3}
-                experience={4}
-              />
-              <UserRankStatus 
-                key={'user._id'} 
-                name={'user.name'} 
-                avatar_url={'user.avatar_url'}
-                level={2}
-                challengesCompleted={3}
-                experience={4}
-              />
-              <UserRankStatus 
-                key={'user._id'} 
-                name={'user.name'} 
-                avatar_url={'user.avatar_url'}
-                level={2}
-                challengesCompleted={3}
-                experience={4}
-              /> */}
               
           </section>
         </Content>

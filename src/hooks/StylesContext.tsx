@@ -1,4 +1,4 @@
-import { useContext, createContext, ReactNode, useState, useCallback } from 'react';
+import { useContext, createContext, ReactNode, useState, useCallback, useEffect } from 'react';
 import light from '../styles/themes/light'
 import dark from '../styles/themes/dark'
 
@@ -35,8 +35,17 @@ interface ThemeContextProviderProps{
 export function ThemeContextProvider({ children }: ThemeContextProviderProps) {
   const [ theme, setTheme ] = useState<ThemeDatas>(light);
 
+  useEffect(() => {
+    const storagedTheme = localStorage.getItem('@gomove:theme');
+      
+    if(storagedTheme) {
+      setTheme(storagedTheme === 'light' ? light : dark)
+    } 
+  }, []);
+  
   const changeTheme = useCallback(() => {
     setTheme(theme === light ? dark : light);
+    localStorage.setItem('@gomove:theme', theme === light ? dark.name : light.name );
   }, [theme])
 
   return (

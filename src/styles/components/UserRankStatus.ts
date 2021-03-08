@@ -7,10 +7,6 @@ export const Container = styled.div`
   border-radius: 6px;
   overflow: hidden;
 
-  @media(max-width: 720px) {
-    /* max-width: 90vw; */
-  }
-
   & + div {
     margin-top: 0.4rem;
   }
