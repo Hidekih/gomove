@@ -23,13 +23,13 @@ export default function Login() {
   
   return (
     <>
-     <Head>
-        <title>GoMove | Login</title>
-      </Head> 
       { loading && <LoadingScreen/> }
 
       { !session && (
         <Container>
+          <Head>
+            <title>GoMove | Login</title>
+          </Head> 
           <SplashArtContainer />
 
           <LoginSection>
