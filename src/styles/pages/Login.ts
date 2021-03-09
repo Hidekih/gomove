@@ -34,16 +34,15 @@ export const LoginSection = styled.section`
   align-self: center;
   display: flex;
   flex-direction: column;
-  width: 500px;
+  width: 480px;
   margin-left: 4rem;
-  /* background: rgba(0,0,0,0.2); */
 
   > img {
     height: 8rem;
   }
 
   strong {
-    margin-top: 6rem;
+    margin-top: 9rem;
     font-size: 2.25rem;
     font-weight: 600;
     color: white;

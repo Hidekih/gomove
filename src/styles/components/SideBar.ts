@@ -16,13 +16,6 @@ export const Container = styled.header`
   background-color: #4953B8;
   background: ${props => props.theme.backgroundSecundary};
 
-  @media(max-width: 720px) {
-    flex-direction: row;
-    width: 100%;
-    height: 5rem;
-    padding: 1.6rem;
-  }
-
   > button {
     background: none;
     border: 0;
@@ -32,6 +25,13 @@ export const Container = styled.header`
   > button img {
     height: 1.8rem;
     color: ${props => props.theme.text};
+  }
+
+  @media(max-width: 720px) {
+    flex-direction: row;
+    width: 100%;
+    height: 5rem;
+    padding: 1.6rem;
   }
 `;
 
@@ -46,7 +46,7 @@ export const LogoAndSwitchTheme = styled.div`
   }
 
   > img {
-    height: 2.4rem;
+    height: 2.8rem;
   }
 
   button {
