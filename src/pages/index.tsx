@@ -1,4 +1,4 @@
-
+import Head from 'next/head';
 import { signIn, useSession } from 'next-auth/client';
 import { useRouter } from 'next/router'
 import { useEffect } from 'react';
@@ -17,7 +17,6 @@ export default function Login() {
 
     if(session) {
       handleRedirectToHome();
-      console.log()
     }
   }, [session])
   
@@ -27,11 +26,13 @@ export default function Login() {
 
       { !session && (
         <Container>
-          
+          <Head>
+            <title>GoMove | Ranking</title>
+          </Head> 
           <SplashArtContainer />
 
           <LoginSection>
-            <img src="/logo.svg"/>
+            <img src="/logo-full.svg"/>
 
             <strong>Bem-vindo</strong>
             <div>

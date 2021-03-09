@@ -35,13 +35,11 @@ export const LoginSection = styled.section`
   display: flex;
   flex-direction: column;
   width: 500px;
-  padding: 0 4rem;
+  margin-left: 4rem;
+  /* background: rgba(0,0,0,0.2); */
 
-
-  @media(max-width: 720px) {
-    display: flex;
-    padding: 0;
-    width: 100%;
+  > img {
+    height: 8rem;
   }
 
   strong {
@@ -53,7 +51,7 @@ export const LoginSection = styled.section`
 
   div {
     display: flex;
-    margin-top: 2rem;
+    margin-top: 2.4rem;
   }
 
   div img {
@@ -71,7 +69,7 @@ export const LoginSection = styled.section`
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 2rem;
+    margin-top: 2.4rem;
     height: 5rem;
     background: rgba(0,0,0, 0.15);
     border: 0;
@@ -81,6 +79,12 @@ export const LoginSection = styled.section`
 
     &:hover {
       background: linear-gradient(90deg, rgba(0,0,0, 0.15) 0%, rgba(0,0,0, 0.05) 110%);;
+    }
+
+    @media(max-width: 720px) {
+      display: flex;
+      padding: 0;
+      width: 100%;
     }
   }
 
