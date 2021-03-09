@@ -1,4 +1,4 @@
-##Esse é um projeto web usando: 
+# Esse é um projeto web usando: 
 
 - Next.Js
 - Typescript
@@ -7,9 +7,11 @@
 - Mongodb
 - Next-auth
 
+Primeiramente lhe convido para dar uma conferida no resultado final [`GoMove`](https://gomove-gamma.vercel.app/home)
+
 ## Getting Started
 
-##Para testar a aplicação, clone o repositório e depois instale as dependências usando o comando:
+Para testar a aplicação, clone o repositório e depois instale as dependências usando o comando:
 ```bash
 npm install
 # or
@@ -30,5 +32,3 @@ yarn dev
 Abra o [http://localhost:3000](http://localhost:3000) no seu navegador para ver o resultado!
 
 Caso tenha algun problema na execução dos passos anteriores me mande uma menssage. Fique livre para testar e aprender o máximo com esse pequeno projeto. 
-
-Link do projeto hospedado na [`Vercel`](https://gomove-gamma.vercel.app/home)
